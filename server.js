@@ -64,6 +64,15 @@ app.get('/collection/:collectionName', (req, res, next) => {
     })
 })
 
+//creating object with POST
+app.post('/collection/:collectionName', (req, res, next) => {
+    req.collection.insert(req.body, (e, results) => {
+    if (e) return next(e)
+    res.send(results.ops)
+    })
+    })
+
+
 const port = process.env.PORT || 3000;
 
 app.listen(port,()=> {
