@@ -36,6 +36,13 @@ app.use(function(req, res, next) {
     });
 
 
+    // connect to MongoDB
+const MongoClient = require('mongodb').MongoClient;
+let db;
+MongoClient.connect('mongodb+srv://Martha:marthako12@cluster0.ssnjx.mongodb.net', (err, client) => {
+db = client.db('Coursework')
+})
+
 const port = process.env.PORT || 3000;
 
 app.listen(port,()=> {
