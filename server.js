@@ -48,6 +48,16 @@ app.get('/', (req, res, next) => {
     res.send('Select a collection, e.g., /collection/lessons or /collection/order')
 })
 
+
+//get the collection name 
+app.param('collectionName', (req, res, next, collectionName) => {
+    req.collection = db.collection(collectionName)
+    // console.log('collection name:', req.collection)
+    return next()
+})
+
+
+
 const port = process.env.PORT || 3000;
 
 app.listen(port,()=> {
