@@ -56,7 +56,13 @@ app.param('collectionName', (req, res, next, collectionName) => {
     return next()
 })
 
-
+// retrieve all the objects from an collection
+app.get('/collection/:collectionName', (req, res, next) => {
+    req.collection.find({}).toArray((e, results) => {
+        if (e) return next(e)
+        res.send(results)
+    })
+})
 
 const port = process.env.PORT || 3000;
 
