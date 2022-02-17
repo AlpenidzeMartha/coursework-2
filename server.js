@@ -43,6 +43,11 @@ MongoClient.connect('mongodb+srv://Martha:marthako12@cluster0.ssnjx.mongodb.net'
 db = client.db('Coursework')
 })
 
+// display a message for root path to show that API is working
+app.get('/', (req, res, next) => {
+    res.send('Select a collection, e.g., /collection/lessons or /collection/order')
+})
+
 const port = process.env.PORT || 3000;
 
 app.listen(port,()=> {
